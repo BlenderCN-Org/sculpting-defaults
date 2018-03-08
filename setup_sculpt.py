@@ -1,3 +1,17 @@
+bl_info = {
+    "name": "Setup Good Defaults for Scultping",
+    "description": "Set several defaults for sculpting from the basic startup file. Based on YanSculpts suggestions",
+    "author": "Johnny Matthews",
+    "version": (0, 0, 1),
+    "blender": (2, 79, 0),
+    "location": "View3d > View > Setup YanSculpts Defaults",
+    "warning": "",
+    "wiki_url": "",
+    "tracker_url": "",
+    "category": "View3d"
+}
+
+
 import bpy
 
 
@@ -30,7 +44,7 @@ class SetupSculpting(Operator):
         return setup(context)
 
 def menu_func_import(self, context):
-    self.layout.operator(SetupSculpting.bl_idname, text="Setup Yan Sculpts")
+    self.layout.operator(SetupSculpting.bl_idname, text="Setup YanSculpts Defaults")
 
 
 def register():
