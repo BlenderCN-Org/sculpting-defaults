@@ -4,11 +4,11 @@ bl_info = {
     "author": "Johnny Matthews",
     "version": (0, 0, 1),
     "blender": (2, 79, 0),
-    "location": "View3d > View > Setup YanSculpts Defaults",
+    "location": "3D View > View > Setup YanSculpts Defaults",
     "warning": "",
     "wiki_url": "",
     "tracker_url": "",
-    "category": "View3d"
+    "category": "3D View"
 }
 
 
