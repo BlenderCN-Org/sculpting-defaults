@@ -30,7 +30,12 @@ def setup(context):
     points[0].location = [0,1]
     points[1].location = [1,1]
     bpy.data.brushes["Scrape/Peaks"].curve.update()
-      
+    
+    if bpy.context.mode != "SCULPT":
+        bpy.ops.sculpt.sculptmode_toggle()
+
+    bpy.context.scene.tool_settings.sculpt.detail_size = 8
+  
     return {'FINISHED'}
 
 from bpy.props import StringProperty, BoolProperty, EnumProperty
