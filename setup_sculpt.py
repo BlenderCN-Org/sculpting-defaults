@@ -1,7 +1,7 @@
 bl_info = {
     "name": "Setup Good Defaults for Scultping",
     "description": "Set several defaults for sculpting from the basic startup file. Based on YanSculpts suggestions",
-    "author": "Johnny Matthews",
+    "author": "Johnny Matthews - johnny.matthews@gmail.com",
     "version": (0, 0, 1),
     "blender": (2, 79, 0),
     "location": "3D View > View > Setup YanSculpts Defaults",
@@ -14,10 +14,61 @@ bl_info = {
 
 import bpy
 
+def createClayShader():
+    mat = bpy.data.materials.new("YanSculptsClay")
+    mat.use_nodes = True
+    tree = mat.node_tree
+    nodes = tree.nodes
+    links = tree.links
+
+    nodes.remove(nodes[0])
+    nodes.remove(nodes[0])
+
+    nodes.new("ShaderNodeOutputMaterial")
+    nodes.new("ShaderNodeMixShader")
+    nodes.new("ShaderNodeMixShader")
+    nodes.new("ShaderNodeMixShader")
+    nodes.new("ShaderNodeBsdfTranslucent")
+    nodes.new("ShaderNodeFresnel")
+    nodes.new("ShaderNodeBsdfDiffuse")
+    nodes.new("ShaderNodeBsdfGlossy")
+
+    nodes[6].inputs[0].default_value = [0.8,0.566,0.403,1.0]
+
+    mul = 160
+    mulh = 140
+
+    nodes[0].location = [6*mul,     -1  * mulh]
+    nodes[1].location = [4.5*mul,   -1  * mulh]
+    nodes[2].location = [3*mul,     -3  * mulh]
+    nodes[3].location = [1.5*mul,   -3  * mulh]
+    nodes[4].location = [1.5*mul,-  4.5 * mulh]
+    nodes[5].location = [0,         0   * mulh]
+    nodes[6].location = [0,         -1.5* mulh]
+    nodes[7].location = [0,         -3  * mulh]
+
+    links.new(nodes[1].outputs[0],nodes[0].inputs[0])
+    links.new(nodes[2].outputs[0],nodes[1].inputs[2])
+    links.new(nodes[3].outputs[0],nodes[1].inputs[1])
+    links.new(nodes[5].outputs[0],nodes[1].inputs[0])
+    links.new(nodes[5].outputs[0],nodes[3].inputs[0])
+    links.new(nodes[6].outputs[0],nodes[3].inputs[1])
+    links.new(nodes[7].outputs[0],nodes[3].inputs[2])
+    links.new(nodes[3].outputs[0],nodes[2].inputs[1])
+    links.new(nodes[4].outputs[0],nodes[2].inputs[2])
+
+    return mat
 
 def setup(context):
     bpy.ops.view3d.snap_cursor_to_center()
     bpy.ops.mesh.primitive_uv_sphere_add(size=1, view_align=False, enter_editmode=False, location=(0, 0, 0), layers=(True, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False))
+ 
+    material = createClayShader()
+    bpy.ops.object.material_slot_add()
+    
+    slot = bpy.context.active_object.material_slots[0]
+    slot.material = material
+
     bpy.context.space_data.use_matcap = True
     bpy.context.space_data.matcap_icon = '06'
     bpy.context.space_data.fx_settings.use_ssao = True
@@ -35,7 +86,9 @@ def setup(context):
         bpy.ops.sculpt.sculptmode_toggle()
 
     bpy.context.scene.tool_settings.sculpt.detail_size = 8
-  
+    bpy.context.scene.cycles.film_transparent = True
+
+
     return {'FINISHED'}
 
 from bpy.props import StringProperty, BoolProperty, EnumProperty

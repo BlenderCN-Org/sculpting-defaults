@@ -7,12 +7,16 @@ This script adds a menu item in the View menu of the Blender 3D View. It sets up
 
 The script currently does the following:
 * Create a UV Sphere at the Origin
-* Turn on the Red Clay Matcap
-* Turn on Ambient Occlusion
+* Create basic Clay Material ("YanSculptsClay") and Assign to UV Sphere
+* Turn ON the Red Clay Matcap
+* Turn ON Ambient Occlusion
 * Set the View Lens to 100
 * Set the Grab Brush Strength to 0.1
 * Set the Scrape/Peaks Brush to MAX
 * Set the Dynotopo Detail Size to 8
+* Set Render -> Film -> Transparent to ON
 
 
-Link to YanSculpts on YouTube: https://www.youtube.com/watch?v=IG1IEpU5VAw
+Link to YanSculpts settings suggestions on YouTube: https://www.youtube.com/watch?v=IG1IEpU5VAw
+Link to YanSculpts basic clay texture on YouTube: https://www.youtube.com/watch?v=QLPiTFqo_ZI
+
