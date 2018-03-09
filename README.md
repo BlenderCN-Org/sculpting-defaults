@@ -18,5 +18,6 @@ The script currently does the following:
 
 
 Link to YanSculpts settings suggestions on YouTube: https://www.youtube.com/watch?v=IG1IEpU5VAw
+
 Link to YanSculpts basic clay texture on YouTube: https://www.youtube.com/watch?v=QLPiTFqo_ZI
 
