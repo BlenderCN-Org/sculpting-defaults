@@ -82,6 +82,7 @@ def setup(context):
     # View Settings
     bpy.context.space_data.use_matcap = True
     bpy.context.space_data.matcap_icon = '06'
+    bpy.context.space_data.show_only_render = True
     bpy.context.space_data.fx_settings.use_ssao = True
     bpy.context.space_data.lens = 100    
     
