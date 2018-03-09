@@ -9,6 +9,7 @@ The script currently does the following:
 * Create a UV Sphere at the Origin
 * Create basic Clay Material ("YanSculptsClay") and Assign to UV Sphere
 * Turn ON the Red Clay Matcap
+* Turn ON "Show Only Render"
 * Turn ON Ambient Occlusion
 * Set the View Lens to 100
 * Set the Grab Brush Strength to 0.1
