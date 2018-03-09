@@ -5,9 +5,6 @@ This script adds a menu item in the View menu of the Blender 3D View. It sets up
 [![Demo the Sculpting Defaults Script](https://img.youtube.com/vi/p-PFfIaAjBk/0.jpg)](https://www.youtube.com/watch?v=p-PFfIaAjBk)
 
 
-http://youtu.be/?hd=1
-
-
 The script currently does the following:
 * Create a UV Sphere at the Origin
 * Turn on the Red Clay Matcap
