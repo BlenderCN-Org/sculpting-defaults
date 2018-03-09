@@ -1,3 +1,6 @@
+import bpy
+from bpy.types import Operator
+
 bl_info = {
     "name": "Setup Good Defaults for Scultping",
     "description": "Set several defaults for sculpting from the basic startup file. Based on YanSculpts suggestions",
@@ -11,10 +14,11 @@ bl_info = {
     "category": "3D View"
 }
 
-
-import bpy
-
 def createClayShader():
+
+    #Create the Clay shader from scratch
+
+    # Create the material and turn on nodes, then delete default nodes
     mat = bpy.data.materials.new("YanSculptsClay")
     mat.use_nodes = True
     tree = mat.node_tree
@@ -24,6 +28,7 @@ def createClayShader():
     nodes.remove(nodes[0])
     nodes.remove(nodes[0])
 
+    # Create the nodes 
     nodes.new("ShaderNodeOutputMaterial")
     nodes.new("ShaderNodeMixShader")
     nodes.new("ShaderNodeMixShader")
@@ -33,8 +38,10 @@ def createClayShader():
     nodes.new("ShaderNodeBsdfDiffuse")
     nodes.new("ShaderNodeBsdfGlossy")
 
+    # Set default values
     nodes[6].inputs[0].default_value = [0.8,0.566,0.403,1.0]
 
+    # Try to lay them out somewhat nicely
     mul = 160
     mulh = 140
 
@@ -47,6 +54,7 @@ def createClayShader():
     nodes[6].location = [0,         -1.5* mulh]
     nodes[7].location = [0,         -3  * mulh]
 
+    # Create Links
     links.new(nodes[1].outputs[0],nodes[0].inputs[0])
     links.new(nodes[2].outputs[0],nodes[1].inputs[2])
     links.new(nodes[3].outputs[0],nodes[1].inputs[1])
@@ -60,20 +68,27 @@ def createClayShader():
     return mat
 
 def setup(context):
+
+    # Create Object
     bpy.ops.view3d.snap_cursor_to_center()
     bpy.ops.mesh.primitive_uv_sphere_add(size=1, view_align=False, enter_editmode=False, location=(0, 0, 0), layers=(True, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False))
  
+    # Create Material and Assign to Object
     material = createClayShader()
     bpy.ops.object.material_slot_add()
-    
     slot = bpy.context.active_object.material_slots[0]
     slot.material = material
 
+    # View Settings
     bpy.context.space_data.use_matcap = True
     bpy.context.space_data.matcap_icon = '06'
     bpy.context.space_data.fx_settings.use_ssao = True
     bpy.context.space_data.lens = 100    
+    
+    # Brush Settings
     bpy.data.brushes["Grab"].strength = 0.1
+    
+    bpy.data.brushes["Blob"].strength = 0.0
     
     points = bpy.data.brushes["Scrape/Peaks"].curve.curves[0].points
     while len(points) > 2:
@@ -86,13 +101,17 @@ def setup(context):
         bpy.ops.sculpt.sculptmode_toggle()
 
     bpy.context.scene.tool_settings.sculpt.detail_size = 8
+
+
+    # Scene Settings
     bpy.context.scene.cycles.film_transparent = True
 
 
     return {'FINISHED'}
 
-from bpy.props import StringProperty, BoolProperty, EnumProperty
-from bpy.types import Operator
+
+
+# Setup Basic Script Stuff from Template
 
 class SetupSculpting(Operator):
     bl_idname = "setup.sculptingdefaults"  

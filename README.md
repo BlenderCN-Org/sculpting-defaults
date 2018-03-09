@@ -12,6 +12,7 @@ The script currently does the following:
 * Turn ON Ambient Occlusion
 * Set the View Lens to 100
 * Set the Grab Brush Strength to 0.1
+* Set Blob Brush to Strength 0 (for adding dynotopo detail)
 * Set the Scrape/Peaks Brush to MAX
 * Set the Dynotopo Detail Size to 8
 * Set Render -> Film -> Transparent to ON
