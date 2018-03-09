@@ -87,6 +87,7 @@ def setup(context):
     
     # Brush Settings
     bpy.data.brushes["Grab"].strength = 0.1
+
     
     bpy.data.brushes["Blob"].strength = 0.0
     
