@@ -14,6 +14,9 @@ bl_info = {
     "category": "3D View"
 }
 
+
+# /Users/jmatthews/Library/Application Support/Blender/2.79/scripts/setup_sculpt/add_detail.png
+# /Users/jmatthews/Library/Application Support/Blender/2.79/scripts/addons/setup_sculpt/add_detail.png
 def createClayShader():
 
     #Create the Clay shader from scratch
@@ -88,9 +91,6 @@ def setup(context):
     
     # Brush Settings
     bpy.data.brushes["Grab"].strength = 0.1
-
-    
-    bpy.data.brushes["Blob"].strength = 0.0
     
     points = bpy.data.brushes["Scrape/Peaks"].curve.curves[0].points
     while len(points) > 2:
@@ -113,9 +113,7 @@ def setup(context):
     brush.strength = 0.0
     brush.use_custom_icon = True
     path = bpy.utils.script_path_user()
-    
-    #paths = bpy.utils.script_paths
-    brush.icon_filepath = os.path.join(path,"adddetail.png")
+    brush.icon_filepath = os.path.join(path,"addons","setup_sculpt.png")
 
     return {'FINISHED'}
 
@@ -140,6 +138,10 @@ def register():
 
 
 def unregister():
+    upath = bpy.utils.script_path_user()
+    file1 = os.join(upath,"setup_sculpt","add_detail.png")
+    os.unlink(file1)
+
     bpy.utils.unregister_class(SetupSculpting)
     bpy.types.VIEW3D_MT_view.remove(menu_func_import)
 
