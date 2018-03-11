@@ -4,7 +4,9 @@ This script adds a menu item in the View menu of the Blender 3D View. It sets up
 
 install using bin/sculpt_setup.zip
 
-[![Demo the Sculpting Defaults Script](https://img.youtube.com/vi/p-PFfIaAjBk/0.jpg)](https://www.youtube.com/watch?v=p-PFfIaAjBk)
+[![Demo the Sculpting Defaults Script](https://img.youtube.com/vi/LUSWpMQe6Xg/0.jpg)](http://youtu.be/LUSWpMQe6Xg?hd=1)
+
+
 
 
 The script currently does the following:
