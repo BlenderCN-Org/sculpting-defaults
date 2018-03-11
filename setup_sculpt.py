@@ -14,12 +14,12 @@ bl_info = {
     "category": "3D View"
 }
 
-def createClayShader():
+def createClayShader(name):
 
     #Create the Clay shader from scratch
 
     # Create the material and turn on nodes, then delete default nodes
-    mat = bpy.data.materials.new("YanSculptsClay")
+    mat = bpy.data.materials.new(name)
     mat.use_nodes = True
     tree = mat.node_tree
     nodes = tree.nodes
@@ -65,6 +65,8 @@ def createClayShader():
     links.new(nodes[3].outputs[0],nodes[2].inputs[1])
     links.new(nodes[4].outputs[0],nodes[2].inputs[2])
 
+    mat.use_fake_user = True
+
     return mat
 
 def setup(context):
@@ -74,10 +76,17 @@ def setup(context):
     bpy.ops.mesh.primitive_uv_sphere_add(size=1, view_align=False, enter_editmode=False, location=(0, 0, 0), layers=(True, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False))
  
     # Create Material and Assign to Object
-    material = createClayShader()
-    bpy.ops.object.material_slot_add()
-    slot = bpy.context.active_object.material_slots[0]
-    slot.material = material
+    clayExists = False
+    for material in bpy.data.materials:
+        if material.name == "YanSculptsClay":
+            clayExists = True
+    
+    if clayExists == False:
+        material = createClayShader("YanSculptsClay")
+        
+        #bpy.ops.object.material_slot_add()
+        #slot = bpy.context.active_object.material_slots[0]
+        #slot.material = material
 
     # View Settings
     bpy.context.space_data.use_matcap = True
@@ -100,17 +109,24 @@ def setup(context):
         bpy.ops.sculpt.sculptmode_toggle()
 
     bpy.context.scene.tool_settings.sculpt.detail_size = 8
+    bpy.ops.sculpt.dynamic_topology_toggle()
 
 
     # Scene Settings
     bpy.context.scene.cycles.film_transparent = True
 
     # Create Detail Brush
-    brush = bpy.data.brushes.new("Add Detail","SCULPT")
-    brush.strength = 0.0
-    brush.use_custom_icon = True
-    path = bpy.utils.script_path_user()
-    brush.icon_filepath = os.path.join(path,"addons","setup_sculpt.png")
+    addDetailExists = False
+    for b in bpy.data.brushes:
+        if b.name == "Add Detail":
+            addDetailExists = True
+    
+    if addDetailExists == False:
+        brush = bpy.data.brushes.new("Add Detail","SCULPT")
+        brush.strength = 0.0
+        brush.use_custom_icon = True
+        path = bpy.utils.script_path_user()
+        brush.icon_filepath = os.path.join(path,"addons","setup_sculpt.png")
 
     return {'FINISHED'}
 
