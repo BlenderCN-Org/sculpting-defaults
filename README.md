@@ -2,6 +2,8 @@
 
 This script adds a menu item in the View menu of the Blender 3D View. It sets up the list of defaults for sculpting by YanScuplts in this video. This is in no way endorsed or supported by YanSculpts.
 
+install using bin/sculpt_setup.zip
+
 [![Demo the Sculpting Defaults Script](https://img.youtube.com/vi/p-PFfIaAjBk/0.jpg)](https://www.youtube.com/watch?v=p-PFfIaAjBk)
 
 

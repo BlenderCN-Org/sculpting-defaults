@@ -130,8 +130,6 @@ def setup(context):
 
     return {'FINISHED'}
 
-
-
 # Setup Basic Script Stuff from Template
 
 class SetupSculpting(Operator):
