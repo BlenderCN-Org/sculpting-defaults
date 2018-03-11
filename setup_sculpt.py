@@ -72,8 +72,8 @@ def createClayShader(name):
 def setup(context):
 
     # Create Object
-    bpy.ops.view3d.snap_cursor_to_center()
-    bpy.ops.mesh.primitive_uv_sphere_add(size=1, view_align=False, enter_editmode=False, location=(0, 0, 0), layers=(True, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False))
+    #bpy.ops.view3d.snap_cursor_to_center()
+    #bpy.ops.mesh.primitive_uv_sphere_add(size=1, view_align=False, enter_editmode=False, location=(0, 0, 0), layers=(True, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False))
  
     # Create Material and Assign to Object
     clayExists = False
