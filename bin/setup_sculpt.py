@@ -1,4 +1,4 @@
-import bpy
+import bpy, os
 from bpy.types import Operator
 
 bl_info = {
@@ -108,6 +108,14 @@ def setup(context):
     # Scene Settings
     bpy.context.scene.cycles.film_transparent = True
 
+    # Create Detail Brush
+    brush = bpy.data.brushes.new("Add Detail","SCULPT")
+    brush.strength = 0.0
+    brush.use_custom_icon = True
+    path = bpy.utils.script_path_user()
+    
+    #paths = bpy.utils.script_paths
+    brush.icon_filepath = os.path.join(path,"adddetail.png")
 
     return {'FINISHED'}
 
