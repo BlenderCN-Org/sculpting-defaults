@@ -14,9 +14,6 @@ bl_info = {
     "category": "3D View"
 }
 
-
-# /Users/jmatthews/Library/Application Support/Blender/2.79/scripts/setup_sculpt/add_detail.png
-# /Users/jmatthews/Library/Application Support/Blender/2.79/scripts/addons/setup_sculpt/add_detail.png
 def createClayShader():
 
     #Create the Clay shader from scratch
