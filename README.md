@@ -15,7 +15,7 @@ The script currently does the following:
 * Turn ON the Red Clay Matcap
 * Turn ON "Show Only Render"
 * Turn ON Ambient Occlusion
-* Set the View Lens to 100
+* Set the View Lens to 80
 * Set the Grab Brush Strength to 0.1
 * Set the Scrape/Peaks Brush to MAX
 * Set the Dynotopo Detail Size to 8

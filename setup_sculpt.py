@@ -93,7 +93,7 @@ def setup(context):
     bpy.context.space_data.matcap_icon = '06'
     bpy.context.space_data.show_only_render = True
     bpy.context.space_data.fx_settings.use_ssao = True
-    bpy.context.space_data.lens = 100    
+    bpy.context.space_data.lens = 80    
     
     # Brush Settings
     bpy.data.brushes["Grab"].strength = 0.1
